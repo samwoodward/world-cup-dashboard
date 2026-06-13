@@ -29,7 +29,7 @@ participants = {
     "Rajiv": ["Germany", "United States", "Argentina", "Tunisia", "Belgium"],
     "Kash": ["Croatia", "Uruguay", "Portugal", "Germany", "Curacao"],
     "Salima": ["Curacao", "Iraq", "Turkey", "Scotland", "Senegal"],
-    "Balas": ["Austria", "Turkey", "Qatar", "Algeria", "Switzerland"]
+    "Barlas": ["Austria", "Turkey", "Qatar", "Algeria", "Switzerland"]
 }
 
 # =========================================================
