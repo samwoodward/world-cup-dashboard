@@ -268,11 +268,11 @@ left, right = st.columns([1, 1])
 
 with left:
     st.subheader("Team Scores")
-    st.dataframe(team_scores_df, use_container_width=True)
+    st.dataframe(team_scores_df, use_container_width=True, hide_index=True)
 
 with right:
     st.subheader("Played Matches")
-    st.dataframe(played_matches_df, use_container_width=True)
+    st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
 
 # =========================================================
 # 10) LEADERBOARD CHART
@@ -301,7 +301,7 @@ left2, right2 = st.columns([1, 1])
 
 with left2:
     st.markdown(f"### {selected_person}'s teams")
-    st.dataframe(selected_breakdown, use_container_width=True)
+    st.dataframe(selected_breakdown, use_container_width=True, hide_index=True)
 
 with right2:
     fig2, ax2 = plt.subplots(figsize=(8, 4))
