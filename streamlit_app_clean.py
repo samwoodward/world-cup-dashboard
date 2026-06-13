@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 #st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
 st.image("FIFA-world-cup-2026-752x440.png")
 st.set_page_config(layout="wide")
-st.title("World Cup Sweepstake Dashboard")
+st.title("R&C World Cup Sweepstake Dashboard")
 
 st.caption(
     f"Last updated (UK): {datetime.now(ZoneInfo('Europe/London')).strftime('%d %b %Y, %H:%M')}"
