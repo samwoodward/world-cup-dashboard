@@ -264,30 +264,6 @@ def highlight_leaderboard(row):
 styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1)
 st.dataframe(styled_leaderboard, use_container_width=True)
 
-left, right = st.columns([1, 1])
-
-with left:
-    st.subheader("Team Scores")
-    st.dataframe(team_scores_df, use_container_width=True, hide_index=True)
-
-with right:
-    st.subheader("Played Matches")
-    st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
-
-# =========================================================
-# 10) LEADERBOARD CHART
-# =========================================================
-
-st.subheader("Leaderboard Chart")
-fig, ax = plt.subplots(figsize=(10, 8))
-leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
-ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
-ax.set_xlabel("Points")
-ax.set_ylabel("Person")
-ax.set_title("Sweepstake Leaderboard")
-plt.tight_layout()
-st.pyplot(fig)
-
 # =========================================================
 # 11) PARTICIPANT BREAKDOWN
 # =========================================================
@@ -312,3 +288,30 @@ with right2:
     ax2.set_title(f"{selected_person} - Team Contribution")
     plt.tight_layout()
     st.pyplot(fig2)
+
+
+left, right = st.columns([1, 1])
+
+with left:
+    st.subheader("Team Scores")
+    st.dataframe(team_scores_df, use_container_width=True, hide_index=True)
+
+with right:
+    st.subheader("Played Matches")
+    st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
+
+# =========================================================
+# 10) LEADERBOARD CHART
+# =========================================================
+
+st.subheader("Leaderboard Chart")
+fig, ax = plt.subplots(figsize=(10, 8))
+leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
+ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
+ax.set_xlabel("Points")
+ax.set_ylabel("Person")
+ax.set_title("Sweepstake Leaderboard")
+plt.tight_layout()
+st.pyplot(fig)
+
+
