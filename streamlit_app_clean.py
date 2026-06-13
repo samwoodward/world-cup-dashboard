@@ -109,7 +109,7 @@ fixtures = [
 
     # Sat 13 Jun
     {"date": "2026-06-13", "stage": "Group", "group": "B", "home": "Qatar", "away": "Switzerland", "home_goals": 2, "away_goals": 1},
-    {"date": "2026-06-13", "stage": "Group", "group": "C", "home": "Brazil", "away": "Morocco", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-13", "stage": "Group", "group": "C", "home": "Brazil", "away": "Morocco", "home_goals": 3, "away_goals": 4},
 
     # Sun 14 Jun
     {"date": "2026-06-14", "stage": "Group", "group": "C", "home": "Haiti", "away": "Scotland", "home_goals": None, "away_goals": None},
