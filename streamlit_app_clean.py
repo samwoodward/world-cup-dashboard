@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
+#st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
+#st.image("FIFA-world-cup-2026-752x440.png")
 st.set_page_config(layout="wide")
 st.title("⚽ World Cup Sweepstake Dashboard")
 st.caption(f"Last updated: {datetime.now().strftime('%d %b %Y, %H:%M')}")
