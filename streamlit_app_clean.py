@@ -200,13 +200,10 @@ def build_leaderboard(participants, team_scores, previous_points):
     rows = []
     for person, teams in participants.items():
         current_points = sum(team_scores.get(team, 0) for team in teams)
-        previous = previous_points.get(person, 0)
-        delta = current_points - previous
 
         rows.append({
             "Name": person,
             "Points": current_points,
-            "Delta": delta,
             "Team 1": teams[0],
             "Team 2": teams[1],
             "Team 3": teams[2],
