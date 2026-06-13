@@ -65,35 +65,6 @@ STAGE_BONUS = {
 FINAL_WINNER_BONUS = 10
 
 # =========================================================
-# 4) PREVIOUS SNAPSHOT FOR "BIGGEST MOVERS"
-#    Update this manually when you want a new baseline.
-#    Example: yesterday's points by person
-# =========================================================
-
-previous_points = {
-    "Audrey": 3,
-    "Esperanza": 3,
-    "Anna": 0,
-    "Becky": 1,
-    "Anne-Sophie": 0,
-    "Sophie": 1,
-    "Anil": 0,
-    "Enrique": 0,
-    "Sam": 3,
-    "Chris": 0,
-    "Akhil": 1,
-    "Scott": 0,
-    "Sonam": 1,
-    "Zoey": 0,
-    "Pavan": 0,
-    "Spyros": 3,
-    "Rajiv": 3,
-    "Kash": 0,
-    "Salima": 0,
-    "Balas": 1
-}
-
-# =========================================================
 # 5) FIXTURES
 #    Update scores manually by replacing None with integers
 # =========================================================
@@ -253,7 +224,7 @@ def person_team_breakdown(person, participants, team_scores):
 # =========================================================
 
 team_scores = calculate_team_scores(fixtures)
-leaderboard = build_leaderboard(participants, team_scores, previous_points)
+leaderboard = build_leaderboard(participants, team_scores)
 team_scores_df = build_team_scores(team_scores)
 played_matches_df = build_played_matches(fixtures)
 
@@ -294,7 +265,7 @@ def highlight_leaderboard(row):
         return ["background-color: #CD7F32; color: white; font-weight: bold;"] * len(row)   # Bronze
     return [""] * len(row)
 
-styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1).format({"Delta": "{:+d}"})
+styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1)
 st.dataframe(styled_leaderboard, use_container_width=True)
 
 left, right = st.columns([1, 1])
