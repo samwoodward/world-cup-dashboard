@@ -2,16 +2,16 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
-import pytz
+from zoneinfo import ZoneInfo
 
 #st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
 st.image("FIFA-world-cup-2026-752x440.png")
 st.set_page_config(layout="wide")
 st.title("World Cup Sweepstake Dashboard")
 
-uk = pytz.timezone("Europe/London")
-st.caption(f"Last updated: {datetime.now(uk).strftime('%d %b %Y, %H:%M')}")
-
+st.caption(
+    f"Last updated (UK): {datetime.now(ZoneInfo('Europe/London')).strftime('%d %b %Y, %H:%M')}"
+)
 
 # =========================================================
 # 1) PARTICIPANTS
