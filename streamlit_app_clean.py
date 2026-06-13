@@ -304,14 +304,14 @@ with right:
 # 10) LEADERBOARD CHART
 # =========================================================
 
-st.subheader("Leaderboard Chart")
-fig, ax = plt.subplots(figsize=(10, 8))
-leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
-ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
-ax.set_xlabel("Points")
-ax.set_ylabel("Person")
-ax.set_title("Sweepstake Leaderboard")
-plt.tight_layout()
-st.pyplot(fig)
+#st.subheader("Leaderboard Chart")
+#fig, ax = plt.subplots(figsize=(10, 8))
+#leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
+#ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
+#ax.set_xlabel("Points")
+#ax.set_ylabel("Person")
+#ax.set_title("Sweepstake Leaderboard")
+#plt.tight_layout()
+#st.pyplot(fig)
 
 
