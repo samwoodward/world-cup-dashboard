@@ -65,15 +65,40 @@ STAGE_BONUS = {
 FINAL_WINNER_BONUS = 10
 
 # =========================================================
-# 4) FIXTURES
+# 4) PREVIOUS SNAPSHOT FOR "BIGGEST MOVERS"
+#    Update this manually when you want a new baseline.
+#    Example: yesterday's points by person
+# =========================================================
+
+previous_points = {
+    "Audrey": 3,
+    "Esperanza": 3,
+    "Anna": 0,
+    "Becky": 1,
+    "Anne-Sophie": 0,
+    "Sophie": 1,
+    "Anil": 0,
+    "Enrique": 0,
+    "Sam": 3,
+    "Chris": 0,
+    "Akhil": 1,
+    "Scott": 0,
+    "Sonam": 1,
+    "Zoey": 0,
+    "Pavan": 0,
+    "Spyros": 3,
+    "Rajiv": 3,
+    "Kash": 0,
+    "Salima": 0,
+    "Balas": 1
+}
+
+# =========================================================
+# 5) FIXTURES
 #    Update scores manually by replacing None with integers
 # =========================================================
 
 fixtures = [
-    # -------------------------
-    # GROUP STAGE
-    # -------------------------
-
     # Thu 11 Jun
     {"date": "2026-06-11", "stage": "Group", "group": "A", "home": "Mexico", "away": "South Africa", "home_goals": 2, "away_goals": 0},
     {"date": "2026-06-11", "stage": "Group", "group": "A", "home": "Korea Republic", "away": "Czechia", "home_goals": 2, "away_goals": 1},
@@ -110,122 +135,10 @@ fixtures = [
     {"date": "2026-06-17", "stage": "Group", "group": "K", "home": "Portugal", "away": "Congo DR", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "England", "away": "Croatia", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "Ghana", "away": "Panama", "home_goals": None, "away_goals": None},
-
-    # Thu 18 Jun
-    {"date": "2026-06-18", "stage": "Group", "group": "K", "home": "Uzbekistan", "away": "Colombia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-18", "stage": "Group", "group": "A", "home": "Czechia", "away": "South Africa", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-18", "stage": "Group", "group": "B", "home": "Switzerland", "away": "Bosnia and Herzegovina", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-18", "stage": "Group", "group": "B", "home": "Canada", "away": "Qatar", "home_goals": None, "away_goals": None},
-
-    # Fri 19 Jun
-    {"date": "2026-06-19", "stage": "Group", "group": "A", "home": "Mexico", "away": "Korea Republic", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-19", "stage": "Group", "group": "D", "home": "USA", "away": "Australia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-19", "stage": "Group", "group": "C", "home": "Scotland", "away": "Morocco", "home_goals": None, "away_goals": None},
-
-    # Sat 20 Jun
-    {"date": "2026-06-20", "stage": "Group", "group": "C", "home": "Brazil", "away": "Haiti", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-20", "stage": "Group", "group": "D", "home": "Türkiye", "away": "Paraguay", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-20", "stage": "Group", "group": "F", "home": "Netherlands", "away": "Sweden", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-20", "stage": "Group", "group": "E", "home": "Germany", "away": "Côte d'Ivoire", "home_goals": None, "away_goals": None},
-
-    # Sun 21 Jun
-    {"date": "2026-06-21", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Curaçao", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-21", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Japan", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-21", "stage": "Group", "group": "H", "home": "Spain", "away": "Saudi Arabia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-21", "stage": "Group", "group": "G", "home": "Belgium", "away": "IR Iran", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-21", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Cabo Verde", "home_goals": None, "away_goals": None},
-
-    # Mon 22 Jun
-    {"date": "2026-06-22", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Egypt", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-22", "stage": "Group", "group": "J", "home": "Argentina", "away": "Austria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-22", "stage": "Group", "group": "I", "home": "France", "away": "Iraq", "home_goals": None, "away_goals": None},
-
-    # Tue 23 Jun
-    {"date": "2026-06-23", "stage": "Group", "group": "I", "home": "Norway", "away": "Senegal", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-23", "stage": "Group", "group": "J", "home": "Jordan", "away": "Algeria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-23", "stage": "Group", "group": "K", "home": "Portugal", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "England", "away": "Ghana", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "Panama", "away": "Croatia", "home_goals": None, "away_goals": None},
-
-    # Wed 24 Jun
-    {"date": "2026-06-24", "stage": "Group", "group": "K", "home": "Colombia", "away": "Congo DR", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-24", "stage": "Group", "group": "B", "home": "Switzerland", "away": "Canada", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-24", "stage": "Group", "group": "B", "home": "Bosnia and Herzegovina", "away": "Qatar", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-24", "stage": "Group", "group": "C", "home": "Scotland", "away": "Brazil", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-24", "stage": "Group", "group": "C", "home": "Morocco", "away": "Haiti", "home_goals": None, "away_goals": None},
-
-    # Thu 25 Jun
-    {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "Czechia", "away": "Mexico", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "South Africa", "away": "Korea Republic", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Curaçao", "away": "Côte d'Ivoire", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Germany", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Japan", "away": "Sweden", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Netherlands", "home_goals": None, "away_goals": None},
-
-    # Fri 26 Jun
-    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Türkiye", "away": "USA", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Paraguay", "away": "Australia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Norway", "away": "France", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Senegal", "away": "Iraq", "home_goals": None, "away_goals": None},
-
-    # Sat 27 Jun
-    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Cabo Verde", "away": "Saudi Arabia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Spain", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "Egypt", "away": "IR Iran", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Belgium", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Panama", "away": "England", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Croatia", "away": "Ghana", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Colombia", "away": "Portugal", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Congo DR", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
-
-    # Sun 28 Jun
-    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Algeria", "away": "Austria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Jordan", "away": "Argentina", "home_goals": None, "away_goals": None},
-
-    # -------------------------
-    # KNOCKOUT DUMMY LINES
-    # -------------------------
-
-    {"date": "2026-06-28", "stage": "R32", "home": "2A", "away": "2B", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-29", "stage": "R32", "home": "1C", "away": "2F", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-29", "stage": "R32", "home": "1E", "away": "3ABCDF", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "1F", "away": "2C", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "2E", "away": "2I", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "1I", "away": "3CDFGH", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1A", "away": "3CEFHI", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1L", "away": "3EHIJK", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1G", "away": "3AEHIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "1D", "away": "3BEFIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "1H", "away": "2J", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "2K", "away": "2L", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "1B", "away": "3EFGIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "2D", "away": "2G", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "1J", "away": "2H", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-04", "stage": "R32", "home": "1K", "away": "3DEIJL", "home_goals": None, "away_goals": None},
-
-    {"date": "2026-07-04", "stage": "R16", "home": "W73", "away": "W75", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-04", "stage": "R16", "home": "W74", "away": "W77", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-05", "stage": "R16", "home": "W76", "away": "W78", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-06", "stage": "R16", "home": "W79", "away": "W80", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-06", "stage": "R16", "home": "W83", "away": "W84", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W81", "away": "W82", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W86", "away": "W88", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W85", "away": "W87", "home_goals": None, "away_goals": None},
-
-    {"date": "2026-07-09", "stage": "QF", "home": "W89", "away": "W90", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-10", "stage": "QF", "home": "W93", "away": "W94", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-11", "stage": "QF", "home": "W91", "away": "W92", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-12", "stage": "QF", "home": "W95", "away": "W96", "home_goals": None, "away_goals": None},
-
-    {"date": "2026-07-14", "stage": "SF", "home": "W97", "away": "W98", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-15", "stage": "SF", "home": "W99", "away": "W100", "home_goals": None, "away_goals": None},
-
-    {"date": "2026-07-18", "stage": "Third", "home": "RU101", "away": "RU102", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-19", "stage": "Final", "home": "W101", "away": "W102", "home_goals": None, "away_goals": None},
 ]
 
 # =========================================================
-# 5) SCORING ENGINE
+# 6) SCORING ENGINE
 # =========================================================
 
 def is_placeholder_team(name):
@@ -280,22 +193,27 @@ def calculate_team_scores(fixtures):
     return team_scores
 
 # =========================================================
-# 6) TABLE BUILDERS
+# 7) TABLE BUILDERS
 # =========================================================
 
-def build_leaderboard(participants, team_scores):
+def build_leaderboard(participants, team_scores, previous_points):
     rows = []
     for person, teams in participants.items():
-        pts = [team_scores.get(team, 0) for team in teams]
+        current_points = sum(team_scores.get(team, 0) for team in teams)
+        previous = previous_points.get(person, 0)
+        delta = current_points - previous
+
         rows.append({
             "Name": person,
-            "Points": sum(pts),
+            "Points": current_points,
+            "Delta": delta,
             "Team 1": teams[0],
             "Team 2": teams[1],
             "Team 3": teams[2],
             "Team 4": teams[3],
             "Team 5": teams[4],
         })
+
     df = pd.DataFrame(rows).sort_values(["Points", "Name"], ascending=[False, True]).reset_index(drop=True)
     df.index = df.index + 1
     df.index.name = "Rank"
@@ -334,20 +252,53 @@ def person_team_breakdown(person, participants, team_scores):
     return pd.DataFrame(rows).sort_values(["Points", "Team"], ascending=[False, True]).reset_index(drop=True)
 
 # =========================================================
-# 7) BUILD DATA
+# 8) BUILD DATA
 # =========================================================
 
 team_scores = calculate_team_scores(fixtures)
-leaderboard = build_leaderboard(participants, team_scores)
+leaderboard = build_leaderboard(participants, team_scores, previous_points)
 team_scores_df = build_team_scores(team_scores)
 played_matches_df = build_played_matches(fixtures)
 
 # =========================================================
-# 8) STREAMLIT LAYOUT
+# 9) TOP HIGHLIGHTS
+# =========================================================
+
+leader_name = leaderboard.iloc[0]["Name"] if not leaderboard.empty else "—"
+leader_points = int(leaderboard.iloc[0]["Points"]) if not leaderboard.empty else 0
+
+biggest_riser_row = leaderboard.sort_values(["Delta", "Points"], ascending=[False, False]).iloc[0] if not leaderboard.empty else None
+biggest_faller_row = leaderboard.sort_values(["Delta", "Points"], ascending=[True, False]).iloc[0] if not leaderboard.empty else None
+
+biggest_riser_name = biggest_riser_row["Name"] if biggest_riser_row is not None else "—"
+biggest_riser_delta = int(biggest_riser_row["Delta"]) if biggest_riser_row is not None else 0
+
+biggest_faller_name = biggest_faller_row["Name"] if biggest_faller_row is not None else "—"
+biggest_faller_delta = int(biggest_faller_row["Delta"]) if biggest_faller_row is not None else 0
+
+m1, m2, m3 = st.columns(3)
+m1.metric("🥇 Current Leader", leader_name, leader_points)
+m2.metric("📈 Biggest Riser", biggest_riser_name, biggest_riser_delta)
+m3.metric("📉 Biggest Faller", biggest_faller_name, biggest_faller_delta)
+
+# =========================================================
+# 10) LEADERBOARD TABLE WITH HIGHLIGHTS
 # =========================================================
 
 st.subheader("Leaderboard")
-st.dataframe(leaderboard, use_container_width=True)
+
+def highlight_leaderboard(row):
+    rank = row.name
+    if rank == 1:
+        return ["background-color: #FFD700; color: black; font-weight: bold;"] * len(row)   # Gold
+    elif rank == 2:
+        return ["background-color: #C0C0C0; color: black; font-weight: bold;"] * len(row)   # Silver
+    elif rank == 3:
+        return ["background-color: #CD7F32; color: white; font-weight: bold;"] * len(row)   # Bronze
+    return [""] * len(row)
+
+styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1).format({"Delta": "{:+d}"})
+st.dataframe(styled_leaderboard, use_container_width=True)
 
 left, right = st.columns([1, 1])
 
@@ -359,6 +310,10 @@ with right:
     st.subheader("Played Matches")
     st.dataframe(played_matches_df, use_container_width=True)
 
+# =========================================================
+# 11) LEADERBOARD CHART
+# =========================================================
+
 st.subheader("Leaderboard Chart")
 fig, ax = plt.subplots(figsize=(10, 8))
 leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
@@ -368,6 +323,10 @@ ax.set_ylabel("Person")
 ax.set_title("Sweepstake Leaderboard")
 plt.tight_layout()
 st.pyplot(fig)
+
+# =========================================================
+# 12) PARTICIPANT BREAKDOWN
+# =========================================================
 
 st.subheader("Participant Breakdown")
 default_index = sorted(participants.keys()).index("Sam") if "Sam" in participants else 0
