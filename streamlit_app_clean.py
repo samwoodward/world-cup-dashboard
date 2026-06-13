@@ -167,7 +167,7 @@ def calculate_team_scores(fixtures):
 # 7) TABLE BUILDERS
 # =========================================================
 
-def build_leaderboard(participants, team_scores, previous_points):
+def build_leaderboard(participants, team_scores):
     rows = []
     for person, teams in participants.items():
         current_points = sum(team_scores.get(team, 0) for team in teams)
