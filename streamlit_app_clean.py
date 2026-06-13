@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
 
+st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
 st.set_page_config(layout="wide")
 st.title("⚽ World Cup Sweepstake Dashboard")
+st.caption(f"Last updated: {datetime.now().strftime('%d %b %Y, %H:%M')}")
 
 # =========================================================
 # 1) PARTICIPANTS
@@ -65,7 +68,7 @@ STAGE_BONUS = {
 FINAL_WINNER_BONUS = 10
 
 # =========================================================
-# 5) FIXTURES
+# 4) FIXTURES
 #    Update scores manually by replacing None with integers
 # =========================================================
 
@@ -109,7 +112,7 @@ fixtures = [
 ]
 
 # =========================================================
-# 6) SCORING ENGINE
+# 5) SCORING ENGINE
 # =========================================================
 
 def is_placeholder_team(name):
@@ -164,14 +167,13 @@ def calculate_team_scores(fixtures):
     return team_scores
 
 # =========================================================
-# 7) TABLE BUILDERS
+# 6) TABLE BUILDERS
 # =========================================================
 
 def build_leaderboard(participants, team_scores):
     rows = []
     for person, teams in participants.items():
         current_points = sum(team_scores.get(team, 0) for team in teams)
-
         rows.append({
             "Name": person,
             "Points": current_points,
@@ -220,7 +222,7 @@ def person_team_breakdown(person, participants, team_scores):
     return pd.DataFrame(rows).sort_values(["Points", "Team"], ascending=[False, True]).reset_index(drop=True)
 
 # =========================================================
-# 8) BUILD DATA
+# 7) BUILD DATA
 # =========================================================
 
 team_scores = calculate_team_scores(fixtures)
@@ -229,28 +231,17 @@ team_scores_df = build_team_scores(team_scores)
 played_matches_df = build_played_matches(fixtures)
 
 # =========================================================
-# 9) TOP HIGHLIGHTS
+# 8) TOP HIGHLIGHT
 # =========================================================
 
 leader_name = leaderboard.iloc[0]["Name"] if not leaderboard.empty else "—"
 leader_points = int(leaderboard.iloc[0]["Points"]) if not leaderboard.empty else 0
 
-biggest_riser_row = leaderboard.sort_values(["Delta", "Points"], ascending=[False, False]).iloc[0] if not leaderboard.empty else None
-biggest_faller_row = leaderboard.sort_values(["Delta", "Points"], ascending=[True, False]).iloc[0] if not leaderboard.empty else None
-
-biggest_riser_name = biggest_riser_row["Name"] if biggest_riser_row is not None else "—"
-biggest_riser_delta = int(biggest_riser_row["Delta"]) if biggest_riser_row is not None else 0
-
-biggest_faller_name = biggest_faller_row["Name"] if biggest_faller_row is not None else "—"
-biggest_faller_delta = int(biggest_faller_row["Delta"]) if biggest_faller_row is not None else 0
-
-m1, m2, m3 = st.columns(3)
+m1 = st.columns(1)[0]
 m1.metric("🥇 Current Leader", leader_name, leader_points)
-m2.metric("📈 Biggest Riser", biggest_riser_name, biggest_riser_delta)
-m3.metric("📉 Biggest Faller", biggest_faller_name, biggest_faller_delta)
 
 # =========================================================
-# 10) LEADERBOARD TABLE WITH HIGHLIGHTS
+# 9) LEADERBOARD TABLE WITH HIGHLIGHTS
 # =========================================================
 
 st.subheader("Leaderboard")
@@ -258,11 +249,11 @@ st.subheader("Leaderboard")
 def highlight_leaderboard(row):
     rank = row.name
     if rank == 1:
-        return ["background-color: #FFD700; color: black; font-weight: bold;"] * len(row)   # Gold
+        return ["background-color: #FFD700; color: black; font-weight: bold;"] * len(row)
     elif rank == 2:
-        return ["background-color: #C0C0C0; color: black; font-weight: bold;"] * len(row)   # Silver
+        return ["background-color: #C0C0C0; color: black; font-weight: bold;"] * len(row)
     elif rank == 3:
-        return ["background-color: #CD7F32; color: white; font-weight: bold;"] * len(row)   # Bronze
+        return ["background-color: #CD7F32; color: white; font-weight: bold;"] * len(row)
     return [""] * len(row)
 
 styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1)
@@ -279,7 +270,7 @@ with right:
     st.dataframe(played_matches_df, use_container_width=True)
 
 # =========================================================
-# 11) LEADERBOARD CHART
+# 10) LEADERBOARD CHART
 # =========================================================
 
 st.subheader("Leaderboard Chart")
@@ -293,7 +284,7 @@ plt.tight_layout()
 st.pyplot(fig)
 
 # =========================================================
-# 12) PARTICIPANT BREAKDOWN
+# 11) PARTICIPANT BREAKDOWN
 # =========================================================
 
 st.subheader("Participant Breakdown")
