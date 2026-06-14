@@ -327,7 +327,7 @@ def build_played_matches(fixtures):
             })
     if not rows:
         return pd.DataFrame(columns=["Date", "Stage", "Group", "Home", "Away", "Score"])
-    return pd.DataFrame(rows).sort_values(["Date"],ascending=[False,True]).reset_index(drop=True)
+    return pd.DataFrame(rows).sort_values("Date",ascending=[False,True]).reset_index(drop=True)
     #return pd.DataFrame(rows).sort_values(["Date", "Stage"],ascending=[False,True]).reset_index(drop=True)
 
 def person_team_breakdown(person, participants, team_scores):
