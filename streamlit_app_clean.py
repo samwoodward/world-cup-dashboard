@@ -190,7 +190,7 @@ fixtures = [
     # KNOCKOUT DUMMY LINES
     # -------------------------
 
-    {"date": "2026-06-28", "stage": "R32", "home": "2A", "away": "2B", "home_goals": 2, "away_goals": 4},
+    {"date": "2026-06-28", "stage": "R32", "home": "2A", "away": "2B", "home_goals": None, "away_goals": None},
     {"date": "2026-06-29", "stage": "R32", "home": "1C", "away": "2F", "home_goals": None, "away_goals": None},
     {"date": "2026-06-29", "stage": "R32", "home": "1E", "away": "3ABCDF", "home_goals": None, "away_goals": None},
     {"date": "2026-06-30", "stage": "R32", "home": "1F", "away": "2C", "home_goals": None, "away_goals": None},
