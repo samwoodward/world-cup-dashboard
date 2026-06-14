@@ -114,6 +114,118 @@ fixtures = [
     {"date": "2026-06-17", "stage": "Group", "group": "K", "home": "Portugal", "away": "Congo DR", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "England", "away": "Croatia", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "Ghana", "away": "Panama", "home_goals": None, "away_goals": None},
+
+     # Thu 18 Jun
+    {"date": "2026-06-18", "stage": "Group", "group": "K", "home": "Uzbekistan", "away": "Colombia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-18", "stage": "Group", "group": "A", "home": "Czechia", "away": "South Africa", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-18", "stage": "Group", "group": "B", "home": "Switzerland", "away": "Bosnia and Herzegovina", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-18", "stage": "Group", "group": "B", "home": "Canada", "away": "Qatar", "home_goals": None, "away_goals": None},
+
+    # Fri 19 Jun
+    {"date": "2026-06-19", "stage": "Group", "group": "A", "home": "Mexico", "away": "Korea Republic", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-19", "stage": "Group", "group": "D", "home": "USA", "away": "Australia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-19", "stage": "Group", "group": "C", "home": "Scotland", "away": "Morocco", "home_goals": None, "away_goals": None},
+
+    # Sat 20 Jun
+    {"date": "2026-06-20", "stage": "Group", "group": "C", "home": "Brazil", "away": "Haiti", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-20", "stage": "Group", "group": "D", "home": "Türkiye", "away": "Paraguay", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-20", "stage": "Group", "group": "F", "home": "Netherlands", "away": "Sweden", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-20", "stage": "Group", "group": "E", "home": "Germany", "away": "Côte d'Ivoire", "home_goals": None, "away_goals": None},
+
+    # Sun 21 Jun
+    {"date": "2026-06-21", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Curaçao", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-21", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Japan", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-21", "stage": "Group", "group": "H", "home": "Spain", "away": "Saudi Arabia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-21", "stage": "Group", "group": "G", "home": "Belgium", "away": "IR Iran", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-21", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Cabo Verde", "home_goals": None, "away_goals": None},
+
+    # Mon 22 Jun
+    {"date": "2026-06-22", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Egypt", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-22", "stage": "Group", "group": "J", "home": "Argentina", "away": "Austria", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-22", "stage": "Group", "group": "I", "home": "France", "away": "Iraq", "home_goals": None, "away_goals": None},
+
+    # Tue 23 Jun
+    {"date": "2026-06-23", "stage": "Group", "group": "I", "home": "Norway", "away": "Senegal", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-23", "stage": "Group", "group": "J", "home": "Jordan", "away": "Algeria", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-23", "stage": "Group", "group": "K", "home": "Portugal", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "England", "away": "Ghana", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "Panama", "away": "Croatia", "home_goals": None, "away_goals": None},
+
+    # Wed 24 Jun
+    {"date": "2026-06-24", "stage": "Group", "group": "K", "home": "Colombia", "away": "Congo DR", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-24", "stage": "Group", "group": "B", "home": "Switzerland", "away": "Canada", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-24", "stage": "Group", "group": "B", "home": "Bosnia and Herzegovina", "away": "Qatar", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-24", "stage": "Group", "group": "C", "home": "Scotland", "away": "Brazil", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-24", "stage": "Group", "group": "C", "home": "Morocco", "away": "Haiti", "home_goals": None, "away_goals": None},
+
+    # Thu 25 Jun
+    {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "Czechia", "away": "Mexico", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "South Africa", "away": "Korea Republic", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Curaçao", "away": "Côte d'Ivoire", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Germany", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Japan", "away": "Sweden", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Netherlands", "home_goals": None, "away_goals": None},
+
+    # Fri 26 Jun
+    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Türkiye", "away": "USA", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Paraguay", "away": "Australia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Norway", "away": "France", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Senegal", "away": "Iraq", "home_goals": None, "away_goals": None},
+
+    # Sat 27 Jun
+    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Cabo Verde", "away": "Saudi Arabia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Spain", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "Egypt", "away": "IR Iran", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Belgium", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Panama", "away": "England", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Croatia", "away": "Ghana", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Colombia", "away": "Portugal", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Congo DR", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
+
+    # Sun 28 Jun
+    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Algeria", "away": "Austria", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Jordan", "away": "Argentina", "home_goals": None, "away_goals": None},
+
+    # -------------------------
+    # KNOCKOUT DUMMY LINES
+    # -------------------------
+
+    {"date": "2026-06-28", "stage": "R32", "home": "2A", "away": "2B", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-29", "stage": "R32", "home": "1C", "away": "2F", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-29", "stage": "R32", "home": "1E", "away": "3ABCDF", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "1F", "away": "2C", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "2E", "away": "2I", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "1I", "away": "3CDFGH", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "1A", "away": "3CEFHI", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "1L", "away": "3EHIJK", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "1G", "away": "3AEHIJ", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "1D", "away": "3BEFIJ", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "1H", "away": "2J", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "2K", "away": "2L", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "1B", "away": "3EFGIJ", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "2D", "away": "2G", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "1J", "away": "2H", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-04", "stage": "R32", "home": "1K", "away": "3DEIJL", "home_goals": None, "away_goals": None},
+
+    {"date": "2026-07-04", "stage": "R16", "home": "W73", "away": "W75", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-04", "stage": "R16", "home": "W74", "away": "W77", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-05", "stage": "R16", "home": "W76", "away": "W78", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-06", "stage": "R16", "home": "W79", "away": "W80", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-06", "stage": "R16", "home": "W83", "away": "W84", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "W81", "away": "W82", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "W86", "away": "W88", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "W85", "away": "W87", "home_goals": None, "away_goals": None},
+
+    {"date": "2026-07-09", "stage": "QF", "home": "W89", "away": "W90", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-10", "stage": "QF", "home": "W93", "away": "W94", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-11", "stage": "QF", "home": "W91", "away": "W92", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-12", "stage": "QF", "home": "W95", "away": "W96", "home_goals": None, "away_goals": None},
+
+    {"date": "2026-07-14", "stage": "SF", "home": "W97", "away": "W98", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-15", "stage": "SF", "home": "W99", "away": "W100", "home_goals": None, "away_goals": None},
+
+    {"date": "2026-07-18", "stage": "Third", "home": "RU101", "away": "RU102", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-19", "stage": "Final", "home": "W101", "away": "W102", "home_goals": None, "away_goals": None},
 ]
 
 # =========================================================
