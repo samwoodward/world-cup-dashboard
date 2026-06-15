@@ -94,11 +94,11 @@ fixtures = [
     {"date": "2026-06-14", "stage": "Group", "group": "C", "home": "Haiti", "away": "Scotland", "home_goals": 0, "away_goals": 1},
     {"date": "2026-06-14", "stage": "Group", "group": "D", "home": "Australia", "away": "Türkiye", "home_goals": 2, "away_goals": 0},
     {"date": "2026-06-14", "stage": "Group", "group": "E", "home": "Germany", "away": "Curaçao", "home_goals": 7, "away_goals": 1},
-    {"date": "2026-06-14", "stage": "Group", "group": "F", "home": "Netherlands", "away": "Japan", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-14", "stage": "Group", "group": "E", "home": "Côte d'Ivoire", "away": "Ecuador", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-14", "stage": "Group", "group": "F", "home": "Netherlands", "away": "Japan", "home_goals": 2, "away_goals": 2},
+    {"date": "2026-06-14", "stage": "Group", "group": "E", "home": "Côte d'Ivoire", "away": "Ecuador", "home_goals": 1, "away_goals": 0},
 
     # Mon 15 Jun
-    {"date": "2026-06-15", "stage": "Group", "group": "F", "home": "Sweden", "away": "Tunisia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-15", "stage": "Group", "group": "F", "home": "Sweden", "away": "Tunisia", "home_goals": 5, "away_goals": 1},
     {"date": "2026-06-15", "stage": "Group", "group": "H", "home": "Spain", "away": "Cabo Verde", "home_goals": None, "away_goals": None},
     {"date": "2026-06-15", "stage": "Group", "group": "G", "home": "Belgium", "away": "Egypt", "home_goals": None, "away_goals": None},
     {"date": "2026-06-15", "stage": "Group", "group": "H", "home": "Saudi Arabia", "away": "Uruguay", "home_goals": None, "away_goals": None},
