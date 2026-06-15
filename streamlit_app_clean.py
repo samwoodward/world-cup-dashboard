@@ -380,6 +380,16 @@ st.dataframe(styled_leaderboard, use_container_width=True)
 # 11) PARTICIPANT BREAKDOWN
 # =========================================================
 
+left, right = st.columns([1, 1])
+
+with left:
+    st.subheader("Team Scores")
+    st.dataframe(team_scores_df, use_container_width=True, hide_index=True)
+
+with right:
+    st.subheader("Played Matches")
+    st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
+    
 st.subheader("Participant Breakdown")
 default_index = sorted(participants.keys()).index("Sam") if "Sam" in participants else 0
 selected_person = st.selectbox("Select participant", sorted(participants.keys()), index=default_index)
@@ -402,15 +412,6 @@ with right2:
     st.pyplot(fig2)
 
 
-left, right = st.columns([1, 1])
-
-with left:
-    st.subheader("Team Scores")
-    st.dataframe(team_scores_df, use_container_width=True, hide_index=True)
-
-with right:
-    st.subheader("Played Matches")
-    st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
 
 # =========================================================
 # 10) LEADERBOARD CHART
