@@ -105,12 +105,12 @@ fixtures = [
 
     # Tue 16 Jun
     {"date": "2026-06-16", "stage": "Group", "group": "G", "home": "IR Iran", "away": "New Zealand", "home_goals": 2, "away_goals": 2},
-    {"date": "2026-06-16", "stage": "Group", "group": "I", "home": "France", "away": "Senegal", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-16", "stage": "Group", "group": "I", "home": "Iraq", "away": "Norway", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-16", "stage": "Group", "group": "I", "home": "France", "away": "Senegal", "home_goals": 3, "away_goals": 1},
+    {"date": "2026-06-16", "stage": "Group", "group": "I", "home": "Iraq", "away": "Norway", "home_goals": 1, "away_goals": 4},
 
     # Wed 17 Jun
-    {"date": "2026-06-17", "stage": "Group", "group": "J", "home": "Argentina", "away": "Algeria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-17", "stage": "Group", "group": "J", "home": "Austria", "away": "Jordan", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-17", "stage": "Group", "group": "J", "home": "Argentina", "away": "Algeria", "home_goals": 3, "away_goals": 0},
+    {"date": "2026-06-17", "stage": "Group", "group": "J", "home": "Austria", "away": "Jordan", "home_goals": 3, "away_goals": 1},
     {"date": "2026-06-17", "stage": "Group", "group": "K", "home": "Portugal", "away": "Congo DR", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "England", "away": "Croatia", "home_goals": None, "away_goals": None},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "Ghana", "away": "Panama", "home_goals": None, "away_goals": None},
