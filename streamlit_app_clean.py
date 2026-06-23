@@ -141,12 +141,12 @@ fixtures = [
 
     # Mon 22 Jun
     {"date": "2026-06-22", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Egypt", "home_goals": 1, "away_goals": 3},
-    {"date": "2026-06-22", "stage": "Group", "group": "J", "home": "Argentina", "away": "Austria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-22", "stage": "Group", "group": "I", "home": "France", "away": "Iraq", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-22", "stage": "Group", "group": "J", "home": "Argentina", "away": "Austria", "home_goals": 2, "away_goals": 0},
+    {"date": "2026-06-22", "stage": "Group", "group": "I", "home": "France", "away": "Iraq", "home_goals": 3, "away_goals": 0},
 
     # Tue 23 Jun
-    {"date": "2026-06-23", "stage": "Group", "group": "I", "home": "Norway", "away": "Senegal", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-23", "stage": "Group", "group": "J", "home": "Jordan", "away": "Algeria", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-23", "stage": "Group", "group": "I", "home": "Norway", "away": "Senegal", "home_goals": 3, "away_goals": 2},
+    {"date": "2026-06-23", "stage": "Group", "group": "J", "home": "Jordan", "away": "Algeria", "home_goals": 1, "away_goals": 2},
     {"date": "2026-06-23", "stage": "Group", "group": "K", "home": "Portugal", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
     {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "England", "away": "Ghana", "home_goals": None, "away_goals": None},
     {"date": "2026-06-23", "stage": "Group", "group": "L", "home": "Panama", "away": "Croatia", "home_goals": None, "away_goals": None},
