@@ -161,14 +161,14 @@ fixtures = [
     # Thu 25 Jun
     {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "Czechia", "away": "Mexico", "home_goals": 0, "away_goals": 3},
     {"date": "2026-06-25", "stage": "Group", "group": "A", "home": "South Africa", "away": "Korea Republic", "home_goals": 1, "away_goals": 0},
-    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Curaçao", "away": "Côte d'Ivoire", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Germany", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Japan", "away": "Sweden", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Netherlands", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Curaçao", "away": "Côte d'Ivoire", "home_goals": 0, "away_goals": 2},
+    {"date": "2026-06-25", "stage": "Group", "group": "E", "home": "Ecuador", "away": "Germany", "home_goals": 2, "away_goals": 1},
+    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Japan", "away": "Sweden", "home_goals": 1, "away_goals": 1},
+    {"date": "2026-06-25", "stage": "Group", "group": "F", "home": "Tunisia", "away": "Netherlands", "home_goals": 1, "away_goals": 3},
 
     # Fri 26 Jun
-    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Türkiye", "away": "USA", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Paraguay", "away": "Australia", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Türkiye", "away": "USA", "home_goals": 3, "away_goals": 2},
+    {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Paraguay", "away": "Australia", "home_goals": 0, "away_goals": 0},
     {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Norway", "away": "France", "home_goals": None, "away_goals": None},
     {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Senegal", "away": "Iraq", "home_goals": None, "away_goals": None},
 
