@@ -4,9 +4,13 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-#st.image("https://upload.wikimedia.org/wikipedia/en/1/17/2026_FIFA_World_Cup_emblem.svg")
-st.image("FIFA-world-cup-2026-752x440.png")
+# =========================================================
+# 0) PAGE SETUP
+# =========================================================
+
 st.set_page_config(layout="wide")
+
+st.image("FIFA-world-cup-2026-752x440.png")
 st.title("R&C World Cup Sweepstake Dashboard")
 
 st.caption(
@@ -52,11 +56,190 @@ TEAM_ALIASES = {
     "Côte d'Ivoire": "Ivory Coast",
     "Curaçao": "Curacao",
     "Congo DR": "DR Congo",
-    "Cabo Verde": "Cape Verde"
+    "Cabo Verde": "Cape Verde",
 }
 
 def canonical_team(name):
-    return TEAM_ALIASES.get(name, name)
+    return TEAM_ALIASES.get(str(name), str(name))
+
+def is_placeholder_team(name):
+    name = str(name)
+    return (
+        name.startswith("1")
+        or name.startswith("2")
+        or name.startswith("3")
+        or name.startswith("W")
+        or name.startswith("RU")
+    )
+
+# =========================================================
+# 2B) ELIMINATION / DISPLAY HELPERS
+# =========================================================
+
+GROUP_STAGE_ELIMINATED_TEAMS = {
+    "Czechia",
+    "South Korea",
+    "Qatar",
+    "Haiti",
+    "Scotland",
+    "Turkey",
+    "Curacao",
+    "Tunisia",
+    "New Zealand",
+    "Iran",
+    "Uruguay",
+    "Saudi Arabia",
+    "Iraq",
+    "Jordan",
+    "Uzbekistan",
+    "Panama",
+}
+
+KNOCKOUT_STAGES = {"R32", "R16", "QF", "SF", "Final"}
+
+def strike_text(text):
+    """
+    Unicode strikethrough so it works in Streamlit dataframes and matplotlib labels.
+    """
+    text = str(text)
+    return "".join(char + "\u0336" for char in text)
+
+def display_team(team, eliminated_teams):
+    """
+    Display canonical team name, struck-through if eliminated.
+    """
+    team = canonical_team(team)
+
+    if is_placeholder_team(team):
+        return team
+
+    return strike_text(team) if team in eliminated_teams else team
+
+def normalise_pen_winner(value, home, away):
+    """
+    Accepts pen_winner as:
+      - "home" / "away"
+      - "H" / "A"
+      - actual team name, e.g. "France"
+      - None
+    """
+    if value is None:
+        return None
+
+    value_str = str(value).strip()
+    value_lower = value_str.lower()
+
+    home = canonical_team(home)
+    away = canonical_team(away)
+
+    if value_lower in {"home", "h"}:
+        return home
+
+    if value_lower in {"away", "a"}:
+        return away
+
+    value_team = canonical_team(value_str)
+
+    if value_team == home:
+        return home
+
+    if value_team == away:
+        return away
+
+    return None
+
+def get_match_winner_loser(match):
+    """
+    Returns (winner, loser).
+
+    For group-stage matches:
+      - Draw returns (None, None)
+
+    For knockout matches:
+      - If goals are unequal, winner is decided by goals.
+      - If goals are equal, winner comes from pen_winner.
+    """
+    stage = match["stage"]
+    home = canonical_team(match["home"])
+    away = canonical_team(match["away"])
+    hg = match["home_goals"]
+    ag = match["away_goals"]
+
+    if hg is None or ag is None:
+        return None, None
+
+    if is_placeholder_team(home) or is_placeholder_team(away):
+        return None, None
+
+    if hg > ag:
+        return home, away
+
+    if ag > hg:
+        return away, home
+
+    # Draw
+    if stage in KNOCKOUT_STAGES:
+        pen_winner = normalise_pen_winner(match.get("pen_winner"), home, away)
+
+        if pen_winner == home:
+            return home, away
+
+        if pen_winner == away:
+            return away, home
+
+    return None, None
+
+def calculate_eliminated_teams(fixtures):
+    """
+    Starts with known group-stage eliminations, then adds knockout losers
+    once results are entered.
+    """
+    eliminated = set(GROUP_STAGE_ELIMINATED_TEAMS)
+
+    for match in fixtures:
+        stage = match["stage"]
+
+        if stage not in KNOCKOUT_STAGES:
+            continue
+
+        winner, loser = get_match_winner_loser(match)
+
+        if winner is not None and loser is not None:
+            eliminated.add(loser)
+
+    return eliminated
+
+def format_score(match):
+    """
+    Handles normal score and penalty score display.
+
+    Example:
+      1-1 (France win 4-3 pens)
+    """
+    hg = match["home_goals"]
+    ag = match["away_goals"]
+
+    if hg is None or ag is None:
+        return ""
+
+    base_score = f"{hg}-{ag}"
+    stage = match["stage"]
+
+    if stage in KNOCKOUT_STAGES and hg == ag:
+        home = canonical_team(match["home"])
+        away = canonical_team(match["away"])
+        pen_winner = normalise_pen_winner(match.get("pen_winner"), home, away)
+
+        home_pens = match.get("home_pens")
+        away_pens = match.get("away_pens")
+
+        if pen_winner is not None and home_pens is not None and away_pens is not None:
+            return f"{base_score} ({pen_winner} win {home_pens}-{away_pens} pens)"
+
+        if pen_winner is not None:
+            return f"{base_score} ({pen_winner} win on pens)"
+
+    return base_score
 
 # =========================================================
 # 3) SCORING RULES
@@ -67,7 +250,7 @@ STAGE_BONUS = {
     "R16": 5,
     "QF": 5,
     "SF": 5,
-    "Final": 10
+    "Final": 10,
 }
 
 FINAL_WINNER_BONUS = 10
@@ -75,6 +258,25 @@ FINAL_WINNER_BONUS = 10
 # =========================================================
 # 4) FIXTURES
 #    Update scores manually by replacing None with integers
+#
+#    For knockout games decided on penalties:
+#
+#    {
+#        "date": "2026-06-28",
+#        "stage": "R32",
+#        "home": "South Africa",
+#        "away": "Canada",
+#        "home_goals": 1,
+#        "away_goals": 1,
+#        "pen_winner": "home",
+#        "home_pens": 4,
+#        "away_pens": 3,
+#    }
+#
+#    pen_winner can be:
+#      - "home"
+#      - "away"
+#      - actual team name
 # =========================================================
 
 fixtures = [
@@ -115,7 +317,7 @@ fixtures = [
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "England", "away": "Croatia", "home_goals": 4, "away_goals": 2},
     {"date": "2026-06-17", "stage": "Group", "group": "L", "home": "Ghana", "away": "Panama", "home_goals": 1, "away_goals": 0},
 
-     # Thu 18 Jun
+    # Thu 18 Jun
     {"date": "2026-06-18", "stage": "Group", "group": "K", "home": "Uzbekistan", "away": "Colombia", "home_goals": 1, "away_goals": 3},
     {"date": "2026-06-18", "stage": "Group", "group": "A", "home": "Czechia", "away": "South Africa", "home_goals": 1, "away_goals": 1},
     {"date": "2026-06-18", "stage": "Group", "group": "B", "home": "Switzerland", "away": "Bosnia and Herzegovina", "home_goals": 4, "away_goals": 1},
@@ -187,25 +389,29 @@ fixtures = [
     {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Jordan", "away": "Argentina", "home_goals": 1, "away_goals": 3},
 
     # -------------------------
-    # KNOCKOUT DUMMY LINES
+    # ROUND OF 32
     # -------------------------
 
-    {"date": "2026-06-28", "stage": "R32", "home": "2A", "away": "2B", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-29", "stage": "R32", "home": "1C", "away": "2F", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-29", "stage": "R32", "home": "1E", "away": "3ABCDF", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "1F", "away": "2C", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "2E", "away": "2I", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "1I", "away": "3CDFGH", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1A", "away": "3CEFHI", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1L", "away": "3EHIJK", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-01", "stage": "R32", "home": "1G", "away": "3AEHIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "1D", "away": "3BEFIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "1H", "away": "2J", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-02", "stage": "R32", "home": "2K", "away": "2L", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "1B", "away": "3EFGIJ", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "2D", "away": "2G", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "1J", "away": "2H", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-04", "stage": "R32", "home": "1K", "away": "3DEIJL", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-28", "stage": "R32", "home": "South Africa", "away": "Canada", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-29", "stage": "R32", "home": "Brazil", "away": "Japan", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-29", "stage": "R32", "home": "Germany", "away": "Paraguay", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "Netherlands", "away": "Morocco", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "Ivory Coast", "away": "Norway", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-30", "stage": "R32", "home": "France", "away": "Sweden", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "Mexico", "away": "Ecuador", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "England", "away": "DR Congo", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-01", "stage": "R32", "home": "Belgium", "away": "Senegal", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "United States", "away": "Bosnia and Herzegovina", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "Spain", "away": "Austria", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-02", "stage": "R32", "home": "Portugal", "away": "Croatia", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "Switzerland", "away": "Algeria", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "Australia", "away": "Egypt", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "Argentina", "away": "Cape Verde", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-04", "stage": "R32", "home": "Colombia", "away": "Ghana", "home_goals": None, "away_goals": None},
+
+    # -------------------------
+    # ROUND OF 16
+    # -------------------------
 
     {"date": "2026-07-04", "stage": "R16", "home": "W73", "away": "W75", "home_goals": None, "away_goals": None},
     {"date": "2026-07-04", "stage": "R16", "home": "W74", "away": "W77", "home_goals": None, "away_goals": None},
@@ -216,13 +422,25 @@ fixtures = [
     {"date": "2026-07-07", "stage": "R16", "home": "W86", "away": "W88", "home_goals": None, "away_goals": None},
     {"date": "2026-07-07", "stage": "R16", "home": "W85", "away": "W87", "home_goals": None, "away_goals": None},
 
+    # -------------------------
+    # QUARTER-FINALS
+    # -------------------------
+
     {"date": "2026-07-09", "stage": "QF", "home": "W89", "away": "W90", "home_goals": None, "away_goals": None},
     {"date": "2026-07-10", "stage": "QF", "home": "W93", "away": "W94", "home_goals": None, "away_goals": None},
     {"date": "2026-07-11", "stage": "QF", "home": "W91", "away": "W92", "home_goals": None, "away_goals": None},
     {"date": "2026-07-12", "stage": "QF", "home": "W95", "away": "W96", "home_goals": None, "away_goals": None},
 
+    # -------------------------
+    # SEMI-FINALS
+    # -------------------------
+
     {"date": "2026-07-14", "stage": "SF", "home": "W97", "away": "W98", "home_goals": None, "away_goals": None},
     {"date": "2026-07-15", "stage": "SF", "home": "W99", "away": "W100", "home_goals": None, "away_goals": None},
+
+    # -------------------------
+    # THIRD-PLACE PLAY-OFF AND FINAL
+    # -------------------------
 
     {"date": "2026-07-18", "stage": "Third", "home": "RU101", "away": "RU102", "home_goals": None, "away_goals": None},
     {"date": "2026-07-19", "stage": "Final", "home": "W101", "away": "W102", "home_goals": None, "away_goals": None},
@@ -232,15 +450,6 @@ fixtures = [
 # 5) SCORING ENGINE
 # =========================================================
 
-def is_placeholder_team(name):
-    return (
-        name.startswith("1") or
-        name.startswith("2") or
-        name.startswith("3") or
-        name.startswith("W") or
-        name.startswith("RU")
-    )
-
 def calculate_team_scores(fixtures):
     team_scores = {}
 
@@ -248,12 +457,12 @@ def calculate_team_scores(fixtures):
         if team not in team_scores:
             team_scores[team] = 0
 
-    for m in fixtures:
-        stage = m["stage"]
-        home = canonical_team(m["home"])
-        away = canonical_team(m["away"])
-        hg = m["home_goals"]
-        ag = m["away_goals"]
+    for match in fixtures:
+        stage = match["stage"]
+        home = canonical_team(match["home"])
+        away = canonical_team(match["away"])
+        hg = match["home_goals"]
+        ag = match["away_goals"]
 
         if hg is None or ag is None:
             continue
@@ -273,8 +482,13 @@ def calculate_team_scores(fixtures):
                 team_scores[home] += 1
                 team_scores[away] += 1
 
-        elif stage in ["R32", "R16", "QF", "SF", "Final"]:
-            winner = home if hg > ag else away
+        elif stage in KNOCKOUT_STAGES:
+            winner, loser = get_match_winner_loser(match)
+
+            if winner is None:
+                # Protects against a knockout draw being entered without pen_winner.
+                continue
+
             ensure_team(winner)
             team_scores[winner] += STAGE_BONUS[stage]
 
@@ -287,65 +501,133 @@ def calculate_team_scores(fixtures):
 # 6) TABLE BUILDERS
 # =========================================================
 
-def build_leaderboard(participants, team_scores):
+def build_leaderboard(participants, team_scores, eliminated_teams):
     rows = []
+
     for person, teams in participants.items():
-        current_points = sum(team_scores.get(team, 0) for team in teams)
+        canonical_teams = [canonical_team(team) for team in teams]
+        current_points = sum(team_scores.get(team, 0) for team in canonical_teams)
+
         rows.append({
             "Name": person,
             "Points": current_points,
-            "Team 1": teams[0],
-            "Team 2": teams[1],
-            "Team 3": teams[2],
-            "Team 4": teams[3],
-            "Team 5": teams[4],
+            "Team 1": display_team(canonical_teams[0], eliminated_teams),
+            "Team 2": display_team(canonical_teams[1], eliminated_teams),
+            "Team 3": display_team(canonical_teams[2], eliminated_teams),
+            "Team 4": display_team(canonical_teams[3], eliminated_teams),
+            "Team 5": display_team(canonical_teams[4], eliminated_teams),
         })
 
-    df = pd.DataFrame(rows).sort_values(["Points", "Name"], ascending=[False, True]).reset_index(drop=True)
+    df = (
+        pd.DataFrame(rows)
+        .sort_values(["Points", "Name"], ascending=[False, True])
+        .reset_index(drop=True)
+    )
+
     df.index = df.index + 1
     df.index.name = "Rank"
+
     return df
 
-def build_team_scores(team_scores):
+def build_team_scores(team_scores, eliminated_teams):
     if not team_scores:
-        return pd.DataFrame(columns=["Team", "Points"])
-    return pd.DataFrame(
-        [{"Team": k, "Points": v} for k, v in team_scores.items()]
-    ).sort_values(["Points", "Team"], ascending=[False, True]).reset_index(drop=True)
+        return pd.DataFrame(columns=["Team", "Points", "Status"])
 
-def build_played_matches(fixtures):
     rows = []
-    for m in fixtures:
-        if m["home_goals"] is not None and m["away_goals"] is not None:
+
+    for team, points in team_scores.items():
+        team = canonical_team(team)
+
+        rows.append({
+            "Team": display_team(team, eliminated_teams),
+            "Raw Team": team,
+            "Points": points,
+            "Status": "Eliminated" if team in eliminated_teams else "Active",
+        })
+
+    df = pd.DataFrame(rows)
+
+    return (
+        df.sort_values(["Points", "Raw Team"], ascending=[False, True])
+        .drop(columns=["Raw Team"])
+        .reset_index(drop=True)
+    )
+
+def build_played_matches(fixtures, eliminated_teams):
+    rows = []
+
+    for match in fixtures:
+        if match["home_goals"] is not None and match["away_goals"] is not None:
+            home = canonical_team(match["home"])
+            away = canonical_team(match["away"])
+
             rows.append({
-                "Date": m["date"],
-                "Stage": m["stage"],
-                "Group": m.get("group", ""),
-                "Home": canonical_team(m["home"]),
-                "Away": canonical_team(m["away"]),
-                "Score": f"{m['home_goals']}-{m['away_goals']}"
+                "Date": match["date"],
+                "Stage": match["stage"],
+                "Group": match.get("group", ""),
+                "Home": display_team(home, eliminated_teams),
+                "Away": display_team(away, eliminated_teams),
+                "Score": format_score(match),
             })
+
     if not rows:
         return pd.DataFrame(columns=["Date", "Stage", "Group", "Home", "Away", "Score"])
+
     return pd.DataFrame(rows).reset_index(drop=True)
 
-def person_team_breakdown(person, participants, team_scores):
+def build_upcoming_matches(fixtures, eliminated_teams):
     rows = []
+
+    for match in fixtures:
+        if match["home_goals"] is None or match["away_goals"] is None:
+            home = canonical_team(match["home"])
+            away = canonical_team(match["away"])
+
+            rows.append({
+                "Date": match["date"],
+                "Stage": match["stage"],
+                "Group": match.get("group", ""),
+                "Home": display_team(home, eliminated_teams),
+                "Away": display_team(away, eliminated_teams),
+            })
+
+    if not rows:
+        return pd.DataFrame(columns=["Date", "Stage", "Group", "Home", "Away"])
+
+    return pd.DataFrame(rows).reset_index(drop=True)
+
+def person_team_breakdown(person, participants, team_scores, eliminated_teams):
+    rows = []
+
     for team in participants[person]:
+        team = canonical_team(team)
+
         rows.append({
-            "Team": team,
-            "Points": team_scores.get(team, 0)
+            "Team": display_team(team, eliminated_teams),
+            "Raw Team": team,
+            "Points": team_scores.get(team, 0),
+            "Status": "Eliminated" if team in eliminated_teams else "Active",
         })
-    return pd.DataFrame(rows).sort_values(["Points", "Team"], ascending=[False, True]).reset_index(drop=True)
+
+    df = pd.DataFrame(rows)
+
+    return (
+        df.sort_values(["Points", "Raw Team"], ascending=[False, True])
+        .drop(columns=["Raw Team"])
+        .reset_index(drop=True)
+    )
 
 # =========================================================
 # 7) BUILD DATA
 # =========================================================
 
+eliminated_teams = calculate_eliminated_teams(fixtures)
 team_scores = calculate_team_scores(fixtures)
-leaderboard = build_leaderboard(participants, team_scores)
-team_scores_df = build_team_scores(team_scores)
-played_matches_df = build_played_matches(fixtures)
+
+leaderboard = build_leaderboard(participants, team_scores, eliminated_teams)
+team_scores_df = build_team_scores(team_scores, eliminated_teams)
+played_matches_df = build_played_matches(fixtures, eliminated_teams)
+upcoming_matches_df = build_upcoming_matches(fixtures, eliminated_teams)
 
 # =========================================================
 # 8) TOP HIGHLIGHT
@@ -365,19 +647,23 @@ st.subheader("Leaderboard")
 
 def highlight_leaderboard(row):
     rank = row.name
+
     if rank == 1:
         return ["background-color: #FFD700; color: black; font-weight: bold;"] * len(row)
-    elif rank == 2:
+
+    if rank == 2:
         return ["background-color: #C0C0C0; color: black; font-weight: bold;"] * len(row)
-    elif rank == 3:
+
+    if rank == 3:
         return ["background-color: #CD7F32; color: white; font-weight: bold;"] * len(row)
+
     return [""] * len(row)
 
 styled_leaderboard = leaderboard.style.apply(highlight_leaderboard, axis=1)
 st.dataframe(styled_leaderboard, use_container_width=True)
 
 # =========================================================
-# 11) PARTICIPANT BREAKDOWN
+# 10) TEAM SCORES / MATCHES
 # =========================================================
 
 left, right = st.columns([1, 1])
@@ -389,11 +675,35 @@ with left:
 with right:
     st.subheader("Played Matches")
     st.dataframe(played_matches_df, use_container_width=True, hide_index=True)
-    
+
+# =========================================================
+# 11) UPCOMING MATCHES
+# =========================================================
+
+st.subheader("Upcoming Matches")
+st.dataframe(upcoming_matches_df, use_container_width=True, hide_index=True)
+
+# =========================================================
+# 12) PARTICIPANT BREAKDOWN
+# =========================================================
+
 st.subheader("Participant Breakdown")
-default_index = sorted(participants.keys()).index("Sam") if "Sam" in participants else 0
-selected_person = st.selectbox("Select participant", sorted(participants.keys()), index=default_index)
-selected_breakdown = person_team_breakdown(selected_person, participants, team_scores)
+
+participant_names = sorted(participants.keys())
+default_index = participant_names.index("Sam") if "Sam" in participant_names else 0
+
+selected_person = st.selectbox(
+    "Select participant",
+    participant_names,
+    index=default_index,
+)
+
+selected_breakdown = person_team_breakdown(
+    selected_person,
+    participants,
+    team_scores,
+    eliminated_teams,
+)
 
 left2, right2 = st.columns([1, 1])
 
@@ -403,28 +713,27 @@ with left2:
 
 with right2:
     fig2, ax2 = plt.subplots(figsize=(8, 4))
+
     breakdown_sorted = selected_breakdown.sort_values("Points", ascending=True)
+
     ax2.barh(breakdown_sorted["Team"], breakdown_sorted["Points"])
     ax2.set_xlabel("Points")
     ax2.set_ylabel("Team")
     ax2.set_title(f"{selected_person} - Team Contribution")
+
     plt.tight_layout()
     st.pyplot(fig2)
 
-
-
 # =========================================================
-# 10) LEADERBOARD CHART
+# 13) OPTIONAL LEADERBOARD CHART
 # =========================================================
 
-#st.subheader("Leaderboard Chart")
-#fig, ax = plt.subplots(figsize=(10, 8))
-#leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
-#ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
-#ax.set_xlabel("Points")
-#ax.set_ylabel("Person")
-#ax.set_title("Sweepstake Leaderboard")
-#plt.tight_layout()
-#st.pyplot(fig)
-
-
+# st.subheader("Leaderboard Chart")
+# fig, ax = plt.subplots(figsize=(10, 8))
+# leaderboard_sorted = leaderboard.sort_values("Points", ascending=True)
+# ax.barh(leaderboard_sorted["Name"], leaderboard_sorted["Points"])
+# ax.set_xlabel("Points")
+# ax.set_ylabel("Person")
+# ax.set_title("Sweepstake Leaderboard")
+# plt.tight_layout()
+# st.pyplot(fig)
