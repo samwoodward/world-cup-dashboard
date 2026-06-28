@@ -170,22 +170,22 @@ fixtures = [
     # Fri 26 Jun
     {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Türkiye", "away": "USA", "home_goals": 3, "away_goals": 2},
     {"date": "2026-06-26", "stage": "Group", "group": "D", "home": "Paraguay", "away": "Australia", "home_goals": 0, "away_goals": 0},
-    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Norway", "away": "France", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Senegal", "away": "Iraq", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Norway", "away": "France", "home_goals": 1, "away_goals": 4},
+    {"date": "2026-06-26", "stage": "Group", "group": "I", "home": "Senegal", "away": "Iraq", "home_goals": 5, "away_goals": 0},
 
     # Sat 27 Jun
-    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Cabo Verde", "away": "Saudi Arabia", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Spain", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "Egypt", "away": "IR Iran", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Belgium", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Panama", "away": "England", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Croatia", "away": "Ghana", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Colombia", "away": "Portugal", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Congo DR", "away": "Uzbekistan", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Cabo Verde", "away": "Saudi Arabia", "home_goals": 0, "away_goals": 0},
+    {"date": "2026-06-27", "stage": "Group", "group": "H", "home": "Uruguay", "away": "Spain", "home_goals": 0, "away_goals": 1},
+    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "Egypt", "away": "IR Iran", "home_goals": 1, "away_goals": 1},
+    {"date": "2026-06-27", "stage": "Group", "group": "G", "home": "New Zealand", "away": "Belgium", "home_goals": 1, "away_goals": 5},
+    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Panama", "away": "England", "home_goals": 0, "away_goals": 2},
+    {"date": "2026-06-27", "stage": "Group", "group": "L", "home": "Croatia", "away": "Ghana", "home_goals": 2, "away_goals": 1},
+    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Colombia", "away": "Portugal", "home_goals": 0, "away_goals": 0},
+    {"date": "2026-06-27", "stage": "Group", "group": "K", "home": "Congo DR", "away": "Uzbekistan", "home_goals": 3, "away_goals": 1},
 
     # Sun 28 Jun
-    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Algeria", "away": "Austria", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Jordan", "away": "Argentina", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Algeria", "away": "Austria", "home_goals": 3, "away_goals": 3},
+    {"date": "2026-06-28", "stage": "Group", "group": "J", "home": "Jordan", "away": "Argentina", "home_goals": 1, "away_goals": 3},
 
     # -------------------------
     # KNOCKOUT DUMMY LINES
