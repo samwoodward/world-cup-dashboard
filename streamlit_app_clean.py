@@ -624,6 +624,18 @@ def person_team_breakdown(person, participants, team_scores, eliminated_teams):
 eliminated_teams = calculate_eliminated_teams(fixtures)
 team_scores = calculate_team_scores(fixtures)
 
+# Award R32 qualification points (before matches are played)
+r32_teams = set()
+
+for match in fixtures:
+    if match["stage"] == "R32":
+        r32_teams.add(canonical_team(match["home"]))
+        r32_teams.add(canonical_team(match["away"]))
+
+for team in r32_teams:
+    if not is_placeholder_team(team):
+        team_scores[team] = team_scores.get(team, 0) + STAGE_BONUS["R32"]
+
 leaderboard = build_leaderboard(participants, team_scores, eliminated_teams)
 team_scores_df = build_team_scores(team_scores, eliminated_teams)
 played_matches_df = build_played_matches(fixtures, eliminated_teams)
