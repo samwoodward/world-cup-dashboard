@@ -392,7 +392,7 @@ fixtures = [
     # ROUND OF 32
     # -------------------------
 
-    {"date": "2026-06-28", "stage": "R32", "home": "South Africa", "away": "Canada", "home_goals": None, "away_goals": None, "pen_winner": "home", "home_pens": 4, "away_pens": 3},
+    {"date": "2026-06-28", "stage": "R32", "home": "South Africa", "away": "Canada", "home_goals": 1, "away_goals": 1, "pen_winner": "home", "home_pens": 4, "away_pens": 3},
     {"date": "2026-06-29", "stage": "R32", "home": "Brazil", "away": "Japan", "home_goals": None, "away_goals": None},
     {"date": "2026-06-29", "stage": "R32", "home": "Germany", "away": "Paraguay", "home_goals": None, "away_goals": None},
     {"date": "2026-06-30", "stage": "R32", "home": "Netherlands", "away": "Morocco", "home_goals": None, "away_goals": None},
