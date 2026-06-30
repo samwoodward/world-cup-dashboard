@@ -393,9 +393,9 @@ fixtures = [
     # -------------------------
 
     {"date": "2026-06-28", "stage": "R32", "home": "South Africa", "away": "Canada", "home_goals": 0, "away_goals": 1},
-    {"date": "2026-06-29", "stage": "R32", "home": "Brazil", "away": "Japan", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-29", "stage": "R32", "home": "Germany", "away": "Paraguay", "home_goals": None, "away_goals": None},
-    {"date": "2026-06-30", "stage": "R32", "home": "Netherlands", "away": "Morocco", "home_goals": None, "away_goals": None},
+    {"date": "2026-06-29", "stage": "R32", "home": "Brazil", "away": "Japan", "home_goals": 2, "away_goals": 1},
+    {"date": "2026-06-29", "stage": "R32", "home": "Germany", "away": "Paraguay", "home_goals": 1, "away_goals": 1, "pen_winner": "away", "home_pens": 3, "away_pens": 4},
+    {"date": "2026-06-30", "stage": "R32", "home": "Netherlands", "away": "Morocco", "home_goals": 1, "away_goals": 1, "pen_winner": "away", "home_pens": 2, "away_pens": 3},
     {"date": "2026-06-30", "stage": "R32", "home": "Ivory Coast", "away": "Norway", "home_goals": None, "away_goals": None},
     {"date": "2026-06-30", "stage": "R32", "home": "France", "away": "Sweden", "home_goals": None, "away_goals": None},
     {"date": "2026-07-01", "stage": "R32", "home": "Mexico", "away": "Ecuador", "home_goals": None, "away_goals": None},
