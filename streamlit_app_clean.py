@@ -413,14 +413,18 @@ fixtures = [
     # ROUND OF 16
     # -------------------------
 
-    {"date": "2026-07-04", "stage": "R16", "home": "W73", "away": "W75", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-04", "stage": "R16", "home": "W74", "away": "W77", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-05", "stage": "R16", "home": "W76", "away": "W78", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-06", "stage": "R16", "home": "W79", "away": "W80", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-06", "stage": "R16", "home": "W83", "away": "W84", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W81", "away": "W82", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W86", "away": "W88", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "W85", "away": "W87", "home_goals": None, "away_goals": None},
+# -------------------------
+    # ROUND OF 16
+    # -------------------------
+
+    {"date": "2026-07-04", "stage": "R16", "home": "Paraguay", "away": "France", "home_goals": 0, "away_goals": 1},
+    {"date": "2026-07-04", "stage": "R16", "home": "Canada", "away": "Morocco", "home_goals": 0, "away_goals": 3},
+    {"date": "2026-07-05", "stage": "R16", "home": "Brazil", "away": "Norway", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-05", "stage": "R16", "home": "Mexico", "away": "England", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-06", "stage": "R16", "home": "Portugal", "away": "Spain", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-06", "stage": "R16", "home": "United States", "away": "Belgium", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "Argentina", "away": "Egypt", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "Switzerland", "away": "Colombia", "home_goals": None, "away_goals": None},
 
     # -------------------------
     # QUARTER-FINALS
