@@ -405,9 +405,9 @@ fixtures = [
     {"date": "2026-07-02", "stage": "R32", "home": "Spain", "away": "Austria", "home_goals": 3, "away_goals": 0},
     {"date": "2026-07-02", "stage": "R32", "home": "Portugal", "away": "Croatia", "home_goals": 2, "away_goals": 1},
     {"date": "2026-07-03", "stage": "R32", "home": "Switzerland", "away": "Algeria", "home_goals": 2, "away_goals": 0},
-    {"date": "2026-07-03", "stage": "R32", "home": "Australia", "away": "Egypt", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-03", "stage": "R32", "home": "Argentina", "away": "Cape Verde", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-04", "stage": "R32", "home": "Colombia", "away": "Ghana", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-03", "stage": "R32", "home": "Australia", "away": "Egypt", "home_goals": 1, "away_goals": 1, "pen_winner": "away", "home_pens": 2, "away_pens": 4},
+    {"date": "2026-07-03", "stage": "R32", "home": "Argentina", "away": "Cape Verde", "home_goals": 3, "away_goals": 2},
+    {"date": "2026-07-04", "stage": "R32", "home": "Colombia", "away": "Ghana", "home_goals": 1, "away_goals": 0},
 
     # -------------------------
     # ROUND OF 16
