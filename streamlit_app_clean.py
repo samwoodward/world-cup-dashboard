@@ -423,17 +423,17 @@ fixtures = [
     {"date": "2026-07-05", "stage": "R16", "home": "Mexico", "away": "England", "home_goals": 2, "away_goals": 3},
     {"date": "2026-07-06", "stage": "R16", "home": "Portugal", "away": "Spain", "home_goals": 0, "away_goals": 1},
     {"date": "2026-07-06", "stage": "R16", "home": "United States", "away": "Belgium", "home_goals": 1, "away_goals": 4},
-    {"date": "2026-07-07", "stage": "R16", "home": "Argentina", "away": "Egypt", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-07", "stage": "R16", "home": "Switzerland", "away": "Colombia", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-07", "stage": "R16", "home": "Argentina", "away": "Egypt", "home_goals": 3, "away_goals": 2},
+    {"date": "2026-07-07", "stage": "R16", "home": "Switzerland", "away": "Colombia", "home_goals": 0, "away_goals": 0, "pen_winner": "home", "home_pens": 4, "away_pens": 3},
 
     # -------------------------
     # QUARTER-FINALS
     # -------------------------
 
-    {"date": "2026-07-09", "stage": "QF", "home": "W89", "away": "W90", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-10", "stage": "QF", "home": "W93", "away": "W94", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-11", "stage": "QF", "home": "W91", "away": "W92", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-12", "stage": "QF", "home": "W95", "away": "W96", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-09", "stage": "QF", "home": "France", "away": "Morocco", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-10", "stage": "QF", "home": "Spain", "away": "Belgium", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-11", "stage": "QF", "home": "Norway", "away": "England", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-12", "stage": "QF", "home": "Argentina", "away": "Switzerland", "home_goals": None, "away_goals": None},
 
     # -------------------------
     # SEMI-FINALS
