@@ -430,7 +430,7 @@ fixtures = [
     # QUARTER-FINALS
     # -------------------------
 
-    {"date": "2026-07-09", "stage": "QF", "home": "France", "away": "Morocco", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-09", "stage": "QF", "home": "France", "away": "Morocco", "home_goals": 2, "away_goals": 0},
     {"date": "2026-07-10", "stage": "QF", "home": "Spain", "away": "Belgium", "home_goals": None, "away_goals": None},
     {"date": "2026-07-11", "stage": "QF", "home": "Norway", "away": "England", "home_goals": None, "away_goals": None},
     {"date": "2026-07-12", "stage": "QF", "home": "Argentina", "away": "Switzerland", "home_goals": None, "away_goals": None},
