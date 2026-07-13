@@ -95,7 +95,7 @@ GROUP_STAGE_ELIMINATED_TEAMS = {
     "Panama",
 }
 
-KNOCKOUT_STAGES = {"R32", "R16", "QF", "SF", "Final"}
+KNOCKOUT_STAGES = {"R32", "R16", "QF", "SF", "Third", "Final"}
 
 def strike_text(text):
     """
@@ -254,6 +254,8 @@ STAGE_BONUS = {
 }
 
 FINAL_WINNER_BONUS = 10
+
+THIRD_PLACE_WINNER_BONUS = 3
 
 # =========================================================
 # 4) FIXTURES
@@ -485,6 +487,16 @@ def calculate_team_scores(fixtures):
             else:
                 team_scores[home] += 1
                 team_scores[away] += 1
+
+        elif stage == "Third":
+            winner, loser = get_match_winner_loser(match)
+
+            if winner is None:
+                # Protects against a third-place draw being entered without pen_winner.
+                continue
+
+            ensure_team(winner)
+            team_scores[winner] += THIRD_PLACE_WINNER_BONUS
 
         elif stage in KNOCKOUT_STAGES:
             winner, loser = get_match_winner_loser(match)
