@@ -431,16 +431,16 @@ fixtures = [
     # -------------------------
 
     {"date": "2026-07-09", "stage": "QF", "home": "France", "away": "Morocco", "home_goals": 2, "away_goals": 0},
-    {"date": "2026-07-10", "stage": "QF", "home": "Spain", "away": "Belgium", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-11", "stage": "QF", "home": "Norway", "away": "England", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-12", "stage": "QF", "home": "Argentina", "away": "Switzerland", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-10", "stage": "QF", "home": "Spain", "away": "Belgium", "home_goals": 2, "away_goals": 1},
+    {"date": "2026-07-11", "stage": "QF", "home": "Norway", "away": "England", "home_goals": 1, "away_goals": 2},
+    {"date": "2026-07-12", "stage": "QF", "home": "Argentina", "away": "Switzerland", "home_goals": 3, "away_goals": 1},
 
     # -------------------------
     # SEMI-FINALS
     # -------------------------
 
-    {"date": "2026-07-14", "stage": "SF", "home": "W97", "away": "W98", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-15", "stage": "SF", "home": "W99", "away": "W100", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-14", "stage": "SF", "home": "France", "away": "Spain", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-15", "stage": "SF", "home": "England", "away": "Argentina", "home_goals": None, "away_goals": None},
 
     # -------------------------
     # THIRD-PLACE PLAY-OFF AND FINAL
