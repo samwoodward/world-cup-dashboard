@@ -441,15 +441,15 @@ fixtures = [
     # SEMI-FINALS
     # -------------------------
 
-    {"date": "2026-07-14", "stage": "SF", "home": "France", "away": "Spain", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-15", "stage": "SF", "home": "England", "away": "Argentina", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-14", "stage": "SF", "home": "France", "away": "Spain", "home_goals": 0, "away_goals": 2},
+    {"date": "2026-07-15", "stage": "SF", "home": "England", "away": "Argentina", "home_goals": 1, "away_goals": 2},
 
     # -------------------------
     # THIRD-PLACE PLAY-OFF AND FINAL
     # -------------------------
 
-    {"date": "2026-07-18", "stage": "Third", "home": "RU101", "away": "RU102", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-19", "stage": "Final", "home": "W101", "away": "W102", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-18", "stage": "Third", "home": "France", "away": "England", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-19", "stage": "Final", "home": "Spain", "away": "Argentina", "home_goals": None, "away_goals": None},
 ]
 
 # =========================================================
