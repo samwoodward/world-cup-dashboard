@@ -448,8 +448,8 @@ fixtures = [
     # THIRD-PLACE PLAY-OFF AND FINAL
     # -------------------------
 
-    {"date": "2026-07-18", "stage": "Third", "home": "France", "away": "England", "home_goals": None, "away_goals": None},
-    {"date": "2026-07-19", "stage": "Final", "home": "Spain", "away": "Argentina", "home_goals": None, "away_goals": None},
+    {"date": "2026-07-18", "stage": "Third", "home": "France", "away": "England", "home_goals": 4, "away_goals": 6},
+    {"date": "2026-07-19", "stage": "Final", "home": "Spain", "away": "Argentina", "home_goals": 1, "away_goals": 0},
 ]
 
 # =========================================================
